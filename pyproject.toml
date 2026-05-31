@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.backends.legacy:build"
+
+[project]
+name = "options-pricing"
+version = "1.0.0"
+description = "Professional options pricing library: Black-Scholes, Monte Carlo, Finite Difference, Greeks, Exotics"
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.10"
+dependencies = [
+    "numpy>=1.24",
+    "scipy>=1.10",
+    "matplotlib>=3.7",
+]
+
+[project.optional-dependencies]
+dev = ["pytest", "pytest-cov"]
+data = ["yfinance", "pandas"]
+notebook = ["jupyter", "plotly", "ipywidgets"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-v --tb=short"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["options_pricing*"]
